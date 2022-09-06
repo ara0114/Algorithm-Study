@@ -23,7 +23,41 @@
   ```
 
 - 순서와 상관없이 처리해도 되지만, 보통 번호가 낮은 순서부터 처리하도록 구현
+
 - 스택 또는 재귀함수 이용하여 구현할 수 있음
+
+```python
+#DFS메소드 정의
+def dfs(graph, v, visited):
+    #현재노드 방문처리
+    visited[v] = True
+	print(v, end=' ')
+    #현재노드와 연결된 다른노드 재귀적으로 방문
+    for i in graph[v]:
+        if not visited[i]:
+            dfs(graph, i, visited)
+            
+#각 노드가 연결된 정보 2차원 리스트로 표현
+graph =[
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
+
+#각 노드가 방문된 정보를 1차원 리스트로 표현
+visited = [False] * 9
+
+#DFS호출
+dfs(graph, 1, visited)
+```
+
+
 
 ![image](https://user-images.githubusercontent.com/103404127/188470222-46edf71c-fe07-4da1-bde2-073f69a1060c.png)
 
@@ -44,6 +78,48 @@
 - deque 라이브러리 사용하는 것이 좋음
 
 - 일반적인 경우 실제 수행시간 DFS보다 좋은편
+
+```python
+from collections import deque
+
+#BFS메소드 정의
+def bfs(graph, start, vistied):
+    #deque라이브러리 사용하여 큐 구현
+    queue = deque([start])
+    #현재노드 방문처리
+    visited[start] = True
+    #큐가 빌 때까지 반복
+    while queue:
+        #큐에서 원소 하나 뽑아 출력
+        v = queue.popleft()
+        print(v, end=' ')
+        #해당 원소와 연결된, 아직 방문하지 않은 원소들 큐에 삽입
+        for i in graph[v]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = True
+                
+#각 노드가 연결된 정보 2차원 리스트로 표현
+graph =[
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
+
+#각 노드가 방문된 정보를 1차원 리스트로 표현
+visited = [False] * 9
+
+#BFS호출
+bfs(graph, 1, visited)               
+```
+
+
 
 ![image](https://user-images.githubusercontent.com/103404127/188470437-925f3938-e33e-4173-95cf-ace8190c8d9d.png)
 
