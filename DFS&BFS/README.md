@@ -57,7 +57,7 @@ visited = [False] * 9
 dfs(graph, 1, visited)
 ```
 
-
+![image](https://user-images.githubusercontent.com/103404127/188580473-fd473c10-384f-4a62-a058-101948b16787.png)
 
 ![image](https://user-images.githubusercontent.com/103404127/188470222-46edf71c-fe07-4da1-bde2-073f69a1060c.png)
 
@@ -85,12 +85,12 @@ from collections import deque
 #BFS메소드 정의
 def bfs(graph, start, vistied):
     #deque라이브러리 사용하여 큐 구현
-    queue = deque([start])
+    queue = deque([start]) # 시작노드를 큐에 넣어줌
     #현재노드 방문처리
     visited[start] = True
     #큐가 빌 때까지 반복
     while queue:
-        #큐에서 원소 하나 뽑아 출력
+        #큐에서 원소 하나 뽑아 해당 노드번호 출력
         v = queue.popleft()
         print(v, end=' ')
         #해당 원소와 연결된, 아직 방문하지 않은 원소들 큐에 삽입
@@ -101,7 +101,7 @@ def bfs(graph, start, vistied):
                 
 #각 노드가 연결된 정보 2차원 리스트로 표현
 graph =[
-    [],
+    [], # 인덱스 0의 값을 비워 나머지를 노드번호와 인덱스 일치시켜
     [2,3,8],
     [1,7],
     [1,4,5],
