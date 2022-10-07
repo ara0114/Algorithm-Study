@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class 15649 {
+public class NandM_1 {
 
   static int arr[];// 탐색 값을 담을 배열
   static boolean visit[];// 방문했는지를 체크하는 배열
