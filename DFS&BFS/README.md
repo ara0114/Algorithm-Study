@@ -59,6 +59,32 @@ dfs(graph, 1, visited)
 
 ![image](https://user-images.githubusercontent.com/103404127/188580473-fd473c10-384f-4a62-a058-101948b16787.png)
 
+```java
+import java.util.*;
+
+public class Main{
+    public static boolean[] visited = new boolean[9];
+    public static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    
+    //DFS 함수 정의
+    public static void dfs(int x){
+        //현재 노드를 방문 처리
+        visited[x] = true;
+        System.out.print(x + " ");
+        //현재 노드와 연결된 다른 노드를 재귀적으로 방문
+        for(int i = 0; i < graph.get(x).size(); i++){
+            int y = graph.get(x).get(i);
+            if(!visited[y]){
+                dfs(y);
+            }
+        }
+    }
+    ...
+}
+```
+
+
+
 ![image](https://user-images.githubusercontent.com/103404127/188470222-46edf71c-fe07-4da1-bde2-073f69a1060c.png)
 
 ## BFS - Breadth Frist Search(너비 우선 탐색)
@@ -117,6 +143,39 @@ visited = [False] * 9
 
 #BFS호출
 bfs(graph, 1, visited)               
+```
+
+
+
+```java
+import java.util.*;
+public class Main{
+    public static boolean[] visited = new boolean[9];
+    public static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    
+    //BFS함수 정의
+    public static void bfs(int start){
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(start);//큐에 삽입
+        //현재 노드 방문처리
+        visited[start] = true;
+        //큐가 빌 때까지 반복
+        while(!q.isEmpty()){
+            //큐에서 하나의 원소를 뽑아 출력
+            int x = q.poll();
+            System.out.println(x+" ");
+            //해당 원소와 연결된 아직 방문하지 않은 원소들을 큐에 삽입
+            for(int i = 0; i < graph.get(x).size(); i++){
+                int y = graph.get(x).get(i);
+                if(!visited[y]){
+                    q.offer(y);
+                    visited[y] = true;
+                }
+            }
+        }
+    }
+    ...
+}
 ```
 
 
