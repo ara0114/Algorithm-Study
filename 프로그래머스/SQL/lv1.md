@@ -345,9 +345,6 @@ SQL을 실행하면 다음과 같이 출력되어야 합니다.
 
 ### 내 답과 풀이
 
-- 대문자 변경 upper
-- 문자열포함 %문자열%
-
 ```mysql
 SELECT NAME, DATETIME
 FROM ANIMAL_INS

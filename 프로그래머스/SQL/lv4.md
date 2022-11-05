@@ -740,7 +740,7 @@ ORDER BY 6
 ### 내 답과 풀이
 
 - UNION : 중복제거 + 합치기
-- UNION: 중복제거하지않고 합치기
+- UNION ALL: 중복제거하지않고 합치기
 
 ```mysql
 SELECT DATE_FORMAT(SALES_DATE,"%Y-%m-%d") AS SALES_DATE, PRODUCT_ID, USER_ID, SALES_AMOUNT
