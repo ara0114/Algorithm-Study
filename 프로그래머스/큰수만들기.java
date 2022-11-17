@@ -1,21 +1,26 @@
 import java.util.*;
-import java.util.stream.*;
+
 class Solution {
     public String solution(String number, int k) {
         String answer = "";
+        char[] arr = new char[number.length()-k];
+        Stack<Character> stack = new Stack<>();
         
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
-        int[] arr = Stream.of(number.split("")).mapToInt(Integer::parseInt).toArray();
-        int len = number.length() - k;
-        
-        for(int i = 0; i< arr.length; i++){
-            pq.add(arr[i]);
+        for(int i = 0; i < number.length(); i++){
+            char c = number.charAt(i);
+            while(!stack.isEmpty() && stack.peek() < c && k-- > 0){
+                stack.pop();
+            }
+            stack.push(c);
         }
         
-        while(len-- > 0){
-            answer += Integer.toString(pq.poll());
+        while(stack.size() > arr.length){
+            stack.pop();
         }
-        
+        for(int i = arr.length - 1; i >= 0; i--){
+            arr[i] = stack.get(i);
+        }
+        answer = String.valueOf(arr);
         return answer;
     }
 }
