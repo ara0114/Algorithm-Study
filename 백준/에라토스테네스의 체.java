@@ -8,7 +8,7 @@ public class Eratos {
     int N = sc.nextInt();
     int K = sc.nextInt();
     
-    int count = 0;
+    int count = 0; 
     ArrayList<Boolean> primeList = new ArrayList<>();
     primeList.add(false);
     primeList.add(false);
